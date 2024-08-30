@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIM and Revit Implementation Status</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #8E7BAA; /* Lighter variation of CBB8DA */
+        }
+
+        h2 {
+            color: #CBB8DA;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #CBB8DA;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #CBB8DA;
+            color: #000000;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F2F2F2;
+        }
+
+        .chart-container {
+            margin: 20px 0;
+        }
+
+        .chart {
+            width: 100%;
+            height: 400px;
+        }
+
+        .regulatory-section,
+        .journey-section {
+            margin: 40px 0;
+        }
+
+        .regulatory-section table {
+            margin-bottom: 20px;
+        }
+
+        .journey-steps {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .journey-step {
+            background-color: #CBB8DA;
+            color: #000000;
+            width: 30%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .journey-step h3 {
+            margin-top: 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            table,
+            th,
+            td {
+                font-size: 12px;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+
+            .chart {
+                height: 300px;
+            }
+
+            .journey-step {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            th,
+            td {
+                padding: 8px;
+                font-size: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .chart-container {
+                height: 200px;
+            }
+
+            .chart {
+                height: 200px;
+            }
+
+            .journey-step {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>BIM & Revit Implementation Overview</h1>
+
+    <div class="chart-container">
+        <canvas id="bimChart" class="chart"></canvas>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>BIM Adoption %</th>
+                <th>Revit Usage %</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Belgium</td>
+                <td>85%</td>
+                <td>80%</td>
+            </tr>
+            <tr>
+                <td>USA</td>
+                <td>90%</td>
+                <td>85%</td>
+            </tr>
+            <tr>
+                <td>Germany</td>
+                <td>80%</td>
+                <td>75%</td>
+            </tr>
+            <tr>
+                <td>France</td>
+                <td>75%</td>
+                <td>70%</td>
+            </tr>
+            <tr>
+                <td>UK</td>
+                <td>95%</td>
+                <td>90%</td>
+            </tr>
+            <tr>
+                <td>Italy</td>
+                <td>70%</td>
+                <td>65%</td>
+            </tr>
+            <tr>
+                <td>India</td>
+                <td>60%</td>
+                <td>55%</td>
+            </tr>
+            <tr>
+                <td>UAE</td>
+                <td>90%</td>
+                <td>85%</td>
+            </tr>
+            <tr>
+                <td>Netherlands</td>
+                <td>85%</td>
+                <td>80%</td>
+            </tr>
+            <tr>
+                <td>Mexico</td>
+                <td>70%</td>
+                <td>65%</td>
+            </tr>
+            <tr>
+                <td>Colombia</td>
+                <td>65%</td>
+                <td>60%</td>
+            </tr>
+            <tr>
+                <td>Austria</td>
+                <td>75%</td>
+                <td>70%</td>
+            </tr>
+            <tr>
+                <td>Spain</td>
+                <td>80%</td>
+                <td>75%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="regulatory-section">
+        <h2>Regulatory Landscape</h2>
+        <p>Understanding the regulatory environment for BIM and Revit implementation is crucial for ensuring compliance and maximizing project efficiency. Below is an overview of key regulations in the selected countries:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Regulation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Belgium</td>
+                    <td>Mandatory for public projects since 2019.</td>
+                </tr>
+                <tr>
+                    <td>USA</td>
+                    <td>Regulations vary by state, with increasing adoption in federal projects.</td>
+                </tr>
+                <tr>
+                    <td>Germany</td>
+                    <td>Mandatory for public infrastructure projects since 2020.</td>
+                </tr>
+                <tr>
+                    <td>France</td>
+                    <td>Encouraged for public projects; mandatory by 2022 for certain types.</td>
+                </tr>
+                <tr>
+                    <td>UK</td>
+                    <td>Mandatory for all public sector construction projects since 2016.</td>
+                </tr>
+                <tr>
+                    <td>Italy</td>
+                    <td>Gradually mandatory for public projects, starting with larger contracts.</td>
+                </tr>
+                <tr>
+                    <td>India</td>
+                    <td>Not mandatory, but increasingly used in large-scale projects.</td>
+                </tr>
+                <tr>
+                    <td>UAE</td>
+                    <td>Mandated for all major construction projects in Dubai since 2014.</td>
+                </tr>
+                <tr>
+                    <td>Netherlands</td>
+                    <td>Strongly encouraged by the government for public works.</td>
+                </tr>
+                <tr>
+                    <td>Mexico</td>
+                    <td>No national mandate, but increasingly adopted by leading firms.</td>
+                </tr>
+                <tr>
+                    <td>Colombia</td>
+                    <td>No official mandate, but adoption is growing in large infrastructure projects.</td>
+                </tr>
+                <tr>
+                    <td>Austria</td>
+                    <td>Encouraged in public projects, with full adoption expected by 2025.</td>
+                </tr>
+                <tr>
+                    <td>Spain</td>
+                    <td>Mandatory for public projects by 2022.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="journey-section">
+        <h2>Interactive Customer Journey</h2>
+        <p>Explore the journey of a typical project, from initial concept to final implementation, and see how BIM and Revit can enhance each stage:</p>
+
+        <div class="journey-steps">
+            <div class="journey-step">
+                <h3>1. Conceptual Design</h3>
+                <p>Leverage BIM for early design decisions, enabling quick iterations and accurate visualizations.</p>
+            </div>
+            <div class="journey-step">
+                <h3>2. Detailed Design</h3>
+                <p>Integrate Revit to create detailed, accurate models that incorporate lighting specifications and performance analysis.</p>
+            </div>
+            <div class="journey-step">
+                <h3>3. Collaboration</h3>
+                <p>Use BIM for seamless collaboration between architects, engineers, and lighting designers, ensuring all teams are aligned.</p>
+            </div>
+            <div class="journey-step">
+                <h3>4. Construction Documentation</h3>
+                <p>Generate precise construction documents directly from the Revit model, reducing errors and rework.</p>
+            </div>
+            <div class="journey-step">
+                <h3>5. Construction Management</h3>
+                <p>Track construction progress and make real-time adjustments using BIM, keeping the project on schedule and within
