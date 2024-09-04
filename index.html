@@ -4,313 +4,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIM and Revit Implementation Status</title>
+    <title>BIM and Revit Implementation Overview</title>
     <style>
         body {
-            font-family: Helvetica, sans-serif;
+            font-family: Helvetica;
             background-color: #FFFFFF;
-            color: #000000;
-            margin: 0;
-            padding: 20px;
+            color: #9b69c2;
+            margin: 100;
+            padding: 100px;
+        }
+
+
+        h1 {
+            color: #00000088;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            padding-left: 50px;
+        
         }
 
         h1 {
-            text-align: center;
-            color: #8E7BAA; /* Lighter variation of CBB8DA */
+            font-size: 3em;
         }
+
+        h2, h3 {
+            color: #00000088;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            padding-left: 0px;
+        
+        }
+
 
         h2 {
-            color: #CBB8DA;
+            font-size: 2em;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
+        h3 {
+            font-size: 1.5em;
         }
 
-        table,
-        th,
-        td {
-            border: 1px solid #CBB8DA;
-        }
-
-        th,
-        td {
-            padding: 12px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #CBB8DA;
-            color: #000000;
-        }
-
-        tr:nth-child(even) {
-            background-color: #F2F2F2;
-        }
-
-        .chart-container {
-            margin: 20px 0;
-        }
-
-        .chart {
-            width: 100%;
-            height: 400px;
-        }
-
-        .regulatory-section,
-        .journey-section {
-            margin: 40px 0;
-        }
-
-        .regulatory-section table {
+/* propiedades de las 3 cajas principales*/
+        .card {
+            background: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            padding: 10px;
         }
 
-        .journey-steps {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin: 20px 0;
+/* propiedades de los titulos*/
+        .section-title {
+            
+            padding: 10px;
+            color: #2e2e2e69;
+            border-radius: 5px;
         }
 
-        .journey-step {
-            background-color: #CBB8DA;
-            color: #000000;
-            width: 30%;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            text-align: center;
+/* propiedades de la caja de la grafica*/
+        .chart-container {
+            border-radius: 100px;
+            margin: 0px 0;
+            padding-left: 5px;
+            margin-bottom: 20px;
+            width: 100%;
+            height: auto;            
         }
 
-        .journey-step h3 {
-            margin-top: 0;
+/* propiedades de la caja de la grafica*/
+        svg {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            table,
-            th,
-            td {
-                font-size: 12px;
-            }
-
-            .chart-container {
-                height: 300px;
-            }
-
-            .chart {
-                height: 300px;
-            }
-
-            .journey-step {
-                width: 45%;
-            }
+/* propiedades de los valores $$*/
+        .label {
+            font-size: 0.8em;
+            fill: #242424;
+            
         }
 
-        @media (max-width: 480px) {
-            th,
-            td {
-                padding: 8px;
-                font-size: 10px;
-            }
 
-            h1 {
-                font-size: 24px;
-            }
 
-            .chart-container {
-                height: 200px;
-            }
-
-            .chart {
-                height: 200px;
-            }
-
-            .journey-step {
-                width: 100%;
-            }
+/* propiedades de las cajas con cada pais y fase*/
+    .container {
+        width: 100%;
+        padding: 0px;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    .card {
+        background-color: #FFFFFF;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        flex: 1 1 calc(33.333% - 40px); /* 3 cards per row */
+        min-width: 300px;
+    }
+    @media (max-width: 768px) {
+        .card {
+            flex: 1 1 calc(50% - 40px); /* 2 cards per row */
         }
+    }
+    @media (max-width: 480px) {
+        .card {
+            flex: 1 1 100%; /* 1 card per row */
+        }
+    }
+
+/* tamaño de imagen*/
+    .responsive {
+  width: 100%;
+  height: auto;
+}
+
     </style>
 </head>
 
 <body>
 
-    <h1>BIM & Revit Implementation Overview</h1>
 
-    <div class="chart-container">
-        <canvas id="bimChart" class="chart"></canvas>
+    <h1>BIM and Revit Implementation Across Countries</h1>
+
+    <div class="card">
+        <h2 class="section-title">Building Information Modeling BIM Market Size</h2>
+        <p>BIM Market size is projected to reach <b>from USD 8.0 billion in 2024 to USD 14.8 billion by 2029</b>; 
+            it is expected to grow at a <b>CAGR of 13.1% from 2024 to 2029</b>.</p> 
+            
+
+            <div class="card">
+                <img src="./Implementacion BIM/CAGR1.JPG" alt="CAGR BIM 2029" class="responsive" />
+                <p>Source: www.marketsandmarkets.com/Market-Reports/building-information-modeling-market-95037387.html</p>
+            </div>
+            
+
+            <p>The increasing demand for BIM software is driven by various factors,
+            including heightened <b>sustainability concerns, expanding construction activities, supportive government policies, and the need for
+                improved collaboration. Additionally, opportunities in emerging markets, advancements in technology integration, and enhanced facility
+            management </b>are expected to further boost the adoption of BIM software.</p>
+
+        <p>Software solutions used for Building Information Modeling offer various features such as <b>interoperability between applications, intuitive visualization capabilities,
+            and cost-effectiveness</b>.3D BIM software is increasingly adopted by architecture, engineering, and construction (AEC) professionals due to its ability to provide
+             comprehensive 3D visualization of projects.</p>
+
+        <p>Using BIM in the pre-construction phase ensures designs comply with local building codes and regulations, <b>facilitating the permit approval process and reducing associated delays</b>.
+             Additionally, BIM helps identify and resolve clashes between different building systems (such as structural, mechanical, electrical, and plumbing) early in the design process. 
+             <b>This early detection minimizes the risk of costly rework and construction delays</b>.</p>
+
+        <p>BIM software offers AEC professionals robust project management features, including cost estimation, scheduling, and clash detection. Designing and constructing more sustainable
+             and energy-efficient buildings, <b>a growing priority in the industry. This focus on sustainability is increasing the demand for BIM tools among environmentally-conscious professionals</b>.</p>
+
+        <div></div>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Country</th>
-                <th>BIM Adoption %</th>
-                <th>Revit Usage %</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Belgium</td>
-                <td>85%</td>
-                <td>80%</td>
-            </tr>
-            <tr>
-                <td>USA</td>
-                <td>90%</td>
-                <td>85%</td>
-            </tr>
-            <tr>
-                <td>Germany</td>
-                <td>80%</td>
-                <td>75%</td>
-            </tr>
-            <tr>
-                <td>France</td>
-                <td>75%</td>
-                <td>70%</td>
-            </tr>
-            <tr>
-                <td>UK</td>
-                <td>95%</td>
-                <td>90%</td>
-            </tr>
-            <tr>
-                <td>Italy</td>
-                <td>70%</td>
-                <td>65%</td>
-            </tr>
-            <tr>
-                <td>India</td>
-                <td>60%</td>
-                <td>55%</td>
-            </tr>
-            <tr>
-                <td>UAE</td>
-                <td>90%</td>
-                <td>85%</td>
-            </tr>
-            <tr>
-                <td>Netherlands</td>
-                <td>85%</td>
-                <td>80%</td>
-            </tr>
-            <tr>
-                <td>Mexico</td>
-                <td>70%</td>
-                <td>65%</td>
-            </tr>
-            <tr>
-                <td>Colombia</td>
-                <td>65%</td>
-                <td>60%</td>
-            </tr>
-            <tr>
-                <td>Austria</td>
-                <td>75%</td>
-                <td>70%</td>
-            </tr>
-            <tr>
-                <td>Spain</td>
-                <td>80%</td>
-                <td>75%</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <div class="regulatory-section">
-        <h2>Regulatory Landscape</h2>
-        <p>Understanding the regulatory environment for BIM and Revit implementation is crucial for ensuring compliance and maximizing project efficiency. Below is an overview of key regulations in the selected countries:</p>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Country</th>
-                    <th>Regulation</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Belgium</td>
-                    <td>Mandatory for public projects since 2019.</td>
-                </tr>
-                <tr>
-                    <td>USA</td>
-                    <td>Regulations vary by state, with increasing adoption in federal projects.</td>
-                </tr>
-                <tr>
-                    <td>Germany</td>
-                    <td>Mandatory for public infrastructure projects since 2020.</td>
-                </tr>
-                <tr>
-                    <td>France</td>
-                    <td>Encouraged for public projects; mandatory by 2022 for certain types.</td>
-                </tr>
-                <tr>
-                    <td>UK</td>
-                    <td>Mandatory for all public sector construction projects since 2016.</td>
-                </tr>
-                <tr>
-                    <td>Italy</td>
-                    <td>Gradually mandatory for public projects, starting with larger contracts.</td>
-                </tr>
-                <tr>
-                    <td>India</td>
-                    <td>Not mandatory, but increasingly used in large-scale projects.</td>
-                </tr>
-                <tr>
-                    <td>UAE</td>
-                    <td>Mandated for all major construction projects in Dubai since 2014.</td>
-                </tr>
-                <tr>
-                    <td>Netherlands</td>
-                    <td>Strongly encouraged by the government for public works.</td>
-                </tr>
-                <tr>
-                    <td>Mexico</td>
-                    <td>No national mandate, but increasingly adopted by leading firms.</td>
-                </tr>
-                <tr>
-                    <td>Colombia</td>
-                    <td>No official mandate, but adoption is growing in large infrastructure projects.</td>
-                </tr>
-                <tr>
-                    <td>Austria</td>
-                    <td>Encouraged in public projects, with full adoption expected by 2025.</td>
-                </tr>
-                <tr>
-                    <td>Spain</td>
-                    <td>Mandatory for public projects by 2022.</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="card">
+        <h2 class="section-title">BIM/Revit Implementation Status</h2>
+        <p>This section provides an overview of BIM and Revit implementation in various countries, 
+            comparing it with revenue figures from the company's top 13 revenue-generating countries for <b>LAD REQUIRED OPPs.</b></p>
+
+        <div id="chart" class="chart-container"></div>
     </div>
 
-    <div class="journey-section">
-        <h2>Interactive Customer Journey</h2>
-        <p>Explore the journey of a typical project, from initial concept to final implementation, and see how BIM and Revit can enhance each stage:</p>
 
-        <div class="journey-steps">
-            <div class="journey-step">
-                <h3>1. Conceptual Design</h3>
+
+
+    
+    <div class="card">
+    <h2 class="section-title">Regulatory Landscape</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="card">
+        
+        <h3>Belgium</h3>
+        <p>Implementation Timeline: Belgium’s BIM adoption has grown significantly since 2013. In the European 
+            Architectural Barometer for Q4 2019, 40% of architects in the country have used BIM.</p>
+        <p>Regulatory Framework: BIM is mandatory for public construction projects over €2.5 million.<br>
+            <b>Organisations like the Association of Major Belgian Contractors and G30 (Association of Architects)
+                 and others have formed a BIM workgroup.</b> 
+            The Belgian government is also working on standardizing BIM practices across different regions.</p>
+        <p>Revit Licenses Sold: Approximately 8,000 licenses.</p>
+
+        </div>
+  
+
+    
+
+        <div class="card">
+        <h3>USA</h3>
+        <p>Implementation Timeline: BIM usage has been widespread since the early 2000s, with significant adoption by 2015.</p>
+        <p>Regulatory Framework: No federal BIM mandate, but many state and local governments require BIM for public projects.</p>
+        <p>Revit Licenses Sold: Over 150,000 licenses.</p>
+  
+</div>
+
+        
+                <div class="card">
+                    <h3>Germany</h3>
+        <p>Implementation Timeline: BIM is integrated into approximately 70% of German construction companies, mainly architects 
+            and specialists in design. Since January 2017 BIM has gone compulsory for projects worth over €100 million.</p>
+        <p>Regulatory Framework: BIM is required for projects over €100 million, with broader mandates since 2020.</p>
+        <p>Revit Licenses Sold: Approximately 25,000 licenses.</p>
+    
+</div>
+
+        
+                <div class="card">
+                    <h3>France</h3>
+        <p>Implementation Timeline: While there is no national mandate, BIM usage has been growing since 2018.</p>
+        <p>Regulatory Framework: Voluntary use of BIM is encouraged, especially in public projects.</p>
+        <p>Revit Licenses Sold: Around 20,000 licenses.</p>
+    
+</div>
+
+        
+                <div class="card">
+                    <h3>UK</h3>
+        <p>Implementation Timeline: The UK has been a leader in BIM adoption since 2016, with mandatory use in public
+             sector projects.</p>
+        <p>Regulatory Framework: only companies that are BIM level 2 compliant are able to take on government projects. 
+            Any project that is funded by the central government is required to produce collaborative 3D BIM.</p>
+        <p>Revit Licenses Sold: Over 50,000 licenses.</p>
+   
+</div>
+
+        
+                <div class="card">
+                    <h3>Italy</h3>
+        <p>Implementation Timeline: BIM became mandatory for public projects over €100 million in 2019, with a phased approach to smaller projects.</p>
+        <p>Regulatory Framework: Gradual implementation of mandatory BIM use for public projects.</p>
+        <p>Revit Licenses Sold: Approximately 15,000 licenses.</p>
+    
+</div>
+
+        
+                <div class="card">
+                    <h3>India</h3>
+        <p>Implementation Timeline: BIM adoption has been increasing since the mid-2010s, especially in large-scale infrastructure projects.</p>
+        <p>Regulatory Framework: No nationwide mandate, but BIM is encouraged in large projects.</p>
+        <p>Revit Licenses Sold: Around 10,000 licenses.</p>
+    
+</div>
+
+        
+                <div class="card">
+                    <h3>UAE</h3>
+        <p>Implementation Timeline: BIM has been mandatory for large-scale buildings in Dubai since 2014.</p>
+        <p>Regulatory Framework: BIM is required for buildings over 40 stories or 300,000 square feet.</p>
+        <p>Revit Licenses Sold: Approximately 12,000 licenses</p>
+    
+</div>
+
+        
+                <div class="card">
+                    <h3>Netherlands</h3>
+        <p>Implementation Timeline:  BIM adoption began in earnest in the early 2010s. The Netherlands also has
+             one of the highest BIM adoption rates in the world.<br>
+             Architects in The Netherlands lead the rest of Europe when it comes to BIM adoption. Currently, 
+             <b>80% of architects have used BIM in their projects.</b> </p>
+        <p>Regulatory Framework: No national mandate, but BIM is widely used in public and private sectors.</p>
+        <p>Revit Licenses Sold: Around 9,000 licenses.</p>
+    
+</div>
+
+        
+                <div class="card">
+                    <h3>Mexico</h3>
+        <p>Implementation Timeline: BIM is increasingly being adopted, with significant growth since 2018.</p>
+        <p>Regulatory Framework: No national mandate, but BIM is used in large public infrastructure projects.</p>
+        <p>Revit Licenses Sold: Around 7,000 licenses.</p>
+        <p><b>Private Entities that promote BIM in the industry:</b><br> BIM Forum México-
+            BIM Task Group México-
+            Cámara Mexicana de la Industria de la Construcción-
+            Constructoras-
+            Consultoras-
+            ONNCCE-
+            Otros organismos normalizadores de la industria de la construcción-
+            Participantes en la industria tecnológica</p>
+    
+</div>
+
+        
+                <div class="card">
+                    <h3>Colombia</h3>
+        <p>Implementation Timeline: BIM usage has been growing since the late 2010s.</p>
+        <p>Regulatory Framework: BIM is encouraged in major public projects. By 2026, the goal is to establish BIM usage
+             requirements in 85% to 100% of national projects or those co-financed by the national government</p>
+        <p>Revit Licenses Sold: Approximately 5,000 licenses.</p>
+        <p><b>Private Entities that promote BIM in the industry:</b><br> Amarilo-
+            Arpro-
+            Aspiros-
+            CAMACOL-
+            Cámara Colombiana de la Infraestructura-
+            CEMEX-
+            Colegio de Arquitectos-
+            Construcciones Planificadas-
+            Constructora AR-
+            Constructora Bolívar-
+            Constructora Capital Medellín-
+            Constructora Colpatria-
+            Grupo de Trabajo BIM-
+            ICONTEC-
+            MC Arquitectos-
+            Pavco Wavin-
+            Pintuco-
+            Prodesa</p>
+    
+</div>
+
+        
+                <div class="card">
+                    <h3>Austria</h3>
+        <p>Implementation Timeline: BIM adoption has been growing since the mid-2010s.</p>
+        <p>Regulatory Framework: No national mandate, but BIM is increasingly used in public projects.</p>
+        <p>Revit Licenses Sold: Around 6,000 licenses.</p>
+    
+</div>
+
+        
+                <div class="card">
+                    <h3>Spain</h3>
+        <p>Implementation Timeline: BIM has been mandatory for public infrastructure projects since 2019.</p>
+        <p>Regulatory Framework: Phased implementation of BIM for different project sizes.</p>
+        <p>Revit Licenses Sold: Approximately 10,000 licenses.</p>
+    </div>
+</div>
+</div>
+</div>
+        
+
+
+    <div class="card">
+        <h2 class="section-title">Customer Journey</h2>
+        <p>The customer journey highlights key stages in the project lifecycle where BIM and Revit add value, from design to operation.</p>
+        
+        <div class="container">
+            <div class="row">
+                <div class="card">
+        <h3>1. Conceptual Design</h3>
                 <p>Leverage BIM for early design decisions, enabling quick iterations and accurate visualizations.</p>
-            </div>
-            <div class="journey-step">
-                <h3>2. Detailed Design</h3>
+            
+        </div>
+    
+        
+                <div class="card">
+        <h3>2. Detailed Design</h3>
                 <p>Integrate Revit to create detailed, accurate models that incorporate lighting specifications and performance analysis.</p>
-            </div>
-            <div class="journey-step">
+            
+        </div>
+    
+                
+                        <div class="card">
                 <h3>3. Collaboration</h3>
                 <p>Use BIM for seamless collaboration between architects, engineers, and lighting designers, ensuring all teams are aligned.</p>
-            </div>
-            <div class="journey-step">
+            
+        </div>
+
+                
+                        <div class="card">
                 <h3>4. Construction Documentation</h3>
                 <p>Generate precise construction documents directly from the Revit model, reducing errors and rework.</p>
-            </div>
-            <div class="journey-step">
+            
+        </div>
+    
+                
+                        <div class="card">
                 <h3>5. Construction Management</h3>
-                <p>Track construction progress and make real-time adjustments using BIM, keeping the project on schedule and within
+                <p>Implement Revit's 4D and 5D capabilities for project scheduling and cost estimation, enhancing project control.</p>
+            
+        </div>
+     
+                
+                        <div class="card">
+                <h3>6. Operation Phase</h3>
+                <p>Utilize BIM for facility management and ongoing operations, ensuring data accuracy throughout the asset's lifecycle.</p>
+            </div>
+        </div>
+        </div>
+     </div>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script>
+        // Data for the bar chart
+        const data = [
+            { country: "Belgium", value: 70, revenue: 17053046 },
+            { country: "USA", value: 85, revenue: 11098355 },
+            { country: "Germany", value: 80, revenue: 9088025 },
+            { country: "France", value: 75, revenue: 7561883 },
+            { country: "UK", value: 90, revenue: 7515115 },
+            { country: "Italy", value: 60, revenue: 6878502 },
+            { country: "India", value: 50, revenue: 2653491 },
+            { country: "UAE", value: 85, revenue: 2179914 },
+            { country: "Netherlands", value: 65, revenue: 1806749 },
+            { country: "Mexico", value: 50, revenue: 1515818 },
+            { country: "Colombia", value: 45, revenue: 1392478 },
+            { country: "Austria", value: 55, revenue: 1223813 },
+            { country: "Spain", value: 55, revenue: 1011370 }
+        ];
+
+        // Set dimensions and margins for the graph
+        const margin = { top: 20, right: 90, bottom: 60, left: 80 },
+            width = 800 - margin.left - margin.right,
+            height = 600 - margin.top - margin.bottom;
+
+        // Append the svg object to the body of the page
+        const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // X axis for BIM/Revit Implementation
+        const x = d3.scaleLinear()
+            .domain([0, 100])
+            .range([0, width]);
+
+        // X axis for Revenue
+        const x2 = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.revenue)])
+            .range([0, width]);
+
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x).ticks(10))
+            .append("text")
+            .attr("y", margin.bottom - 20)
+            .attr("x", width / 2)
+            .attr("text-anchor", "middle")
+            .attr("fill", "#000000")
+            .text("BIM/Revit Implementation (%)");
+
+        // Y axis
+        const y = d3.scaleBand()
+            .range([0, height])
+            .domain(data.map(d => d.country))
+            .padding(.1);
+
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+        // Bars for BIM/Revit Implementation
+        svg.selectAll(".bar1")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", x(0))
+            .attr("y", d => y(d.country))
+            .attr("width", d => x(d.value))
+            .attr("height", y.bandwidth() / 2)
+            .attr("fill", "#CBB8DA");
+
+        // Labels for BIM/Revit Implementation
+        svg.selectAll(".label1")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("x", d => x(d.value) + 5)
+            .attr("y", d => y(d.country) + y.bandwidth() / 4)
+            .attr("dy", ".35em")
+            .attr("class", "label")
+            .text(d => `${d.value}%`);
+
+        // Bars for Revenue
+        svg.selectAll(".bar2")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", x(0))
+            .attr("y", d => y(d.country) + y.bandwidth() / 2)
+            .attr("width", d => x2(d.revenue))
+            .attr("height", y.bandwidth() / 2)
+            .attr("fill", "#2e2e2e69");
+
+        // Labels for Revenue
+        svg.selectAll(".label2")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("x", d => x2(d.revenue) + 5)
+            .attr("y", d => y(d.country) + y.bandwidth() * 3 / 4)
+            .attr("dy", ".35em")
+            .attr("class", "label")
+            .text(d => `$${d.revenue.toLocaleString()}`);
+    </script>
+
+</body>
+</html>
